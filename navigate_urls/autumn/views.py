@@ -22,7 +22,7 @@ def listInAutumn(request):
             '<br/> lá rơi êm đềm ... '
             + '<br/> ~ ' + datetime.now().strftime('%A, %d-%B-%Y %H:%M:%S')
             + '</p>'
-            + '<br/>   ------------ DANH SÁCH CHO MÙA HÈ ---------'
+            + '<br/>   ------------ DANH SÁCH CHO MÙA THU ---------'
             + '<br/>   --------> Chuyên mục 1 ---------'
             + '<br/>   --------> Chuyên mục 2 ---------'
     )

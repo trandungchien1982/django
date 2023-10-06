@@ -46,26 +46,26 @@ http://127.0.0.1:8000/polls
 
 - Hiển thị trang mang sắc thái mùa xuân với urls:
 ```shell
-http://127.0.0.1:8000/spring
-http://127.0.0.1:8000/spring/list
+http://localhost:8000/spring
+http://localhost:8000/spring/list
 ```
 
 - Hiển thị trang mang sắc thái mùa hè với urls:
 ```shell
-http://127.0.0.1:8000/summer
-http://127.0.0.1:8000/summer/list
+http://localhost:8000/summer
+http://localhost:8000/summer/list
 ```
 
 - Hiển thị trang mang sắc thái mùa thu với urls:
 ```shell
-http://127.0.0.1:8000/autumn
-http://127.0.0.1:8000/autumn/list
+http://localhost:8000/autumn
+http://localhost:8000/autumn/list
 ```
 
 - Hiển thị trang mang sắc thái mùa đông với urls:
 ```shell
-http://127.0.0.1:8000/winter
-http://127.0.0.1:8000/winter/list
+http://localhost:8000/winter
+http://localhost:8000/winter/list
 ```
 
 
@@ -81,7 +81,6 @@ python3 manage.py startapp spring
 python3 manage.py startapp summer
 python3 manage.py startapp autumn
 python3 manage.py startapp winter
-
 ```
 
 **Định vị URLs đến các components UI cần thiết được mô tả như sau**
@@ -90,8 +89,35 @@ main_site/settings.py
 	ROOT_URLCONF = 'main_site.urls'
 
 main_site/urls.py
+	# Urls trỏ đến 4 seasons khác nhau ...
+    path('spring/', include('spring.urls')),
+    path('summer/', include('summer.urls')),
+    path('autumn/', include('autumn.urls')),
+    path('winter/', include('winter.urls')),
 	
+spring/urls.py
+	urlpatterns = [
+		path('', views.index, name='index'),
+		path('list', views.listInSpring, name='listInSpring'),
+	]
 
+summer/urls.py
+	urlpatterns = [
+		path('', views.index, name='index'),
+		path('list', views.listInSummer, name='listInSummer'),
+	]
+
+autumn/urls.py
+	urlpatterns = [
+    	path('', views.index, name='index'),
+    	path('list', views.listInAutumn, name='listInAutumn'),
+	]
+
+winter/urls.py
+	urlpatterns = [
+		path('', views.index, name='index'),
+		path('list', views.listInWinter, name='listInWinter'),
+	]
 ```
 
 **Kết quả thực thi**<br/>
@@ -101,5 +127,5 @@ tdc@tdc:~/django/navigate_urls$ python3 manage.py runserver
 
 **Truy cập trang chủ**
 ```shell
-http://127.0.0.1:8000/
+http://localhost:8000/
 ```
