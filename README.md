@@ -89,7 +89,7 @@ main_site/settings.py
 	ROOT_URLCONF = 'main_site.urls'
 
 main_site/urls.py
-# Urls trỏ đến 4 seasons khác nhau ...
+    # Urls trỏ đến 4 seasons khác nhau ...
     path('spring/', include('spring.urls')),
     path('summer/', include('summer.urls')),
     path('autumn/', include('autumn.urls')),
