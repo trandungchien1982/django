@@ -32,7 +32,7 @@ D:\Projects\django
 
 ==============================================================
 
-# Ví dụ [01.HelloWorld]
+# Ví dụ [02.HelloWorld]
 ==============================================================
 
 **Ta sẽ tạo 1 App Django mẫu như sau:**<br/>
@@ -44,23 +44,59 @@ http://127.0.0.1:8000/polls
 	- In ra lời chào thế giới
 	- Chúc ngày mới vui vẻ :)
 
-- Hiển thị trang Login Admin khi truy cập vào
+- Hiển thị trang mang sắc thái mùa xuân với urls:
 ```shell
-http://127.0.0.1:8000/admin
+http://127.0.0.1:8000/spring
+http://127.0.0.1:8000/spring/list
 ```
+
+- Hiển thị trang mang sắc thái mùa hè với urls:
+```shell
+http://127.0.0.1:8000/summer
+http://127.0.0.1:8000/summer/list
+```
+
+- Hiển thị trang mang sắc thái mùa thu với urls:
+```shell
+http://127.0.0.1:8000/autumn
+http://127.0.0.1:8000/autumn/list
+```
+
+- Hiển thị trang mang sắc thái mùa đông với urls:
+```shell
+http://127.0.0.1:8000/winter
+http://127.0.0.1:8000/winter/list
+```
+
 
 **Tham khảo**
 - https://viblo.asia/p/tim-hieu-ve-django-framework-ho-tro-python-trong-lap-trinh-web-QpmlexbkZrd
 - https://medium.com/@doanhtu/l%C3%A0m-sao-%C4%91%E1%BB%83-t%E1%BA%A1o-1-trang-web-v%E1%BB%9Bi-django-i-fddff91786f7
 
-**Tạo 1 Poll app (Python package)**
+**Tạo 4 apps mang các sắc thái khác nhau (Python packages)**
 ```shell
-python3 manage.py startapp polls
+tdc@tdc:~/django/navigate_urls$
+-------------------------------------------------
+python3 manage.py startapp spring
+python3 manage.py startapp summer
+python3 manage.py startapp autumn
+python3 manage.py startapp winter
+
+```
+
+**Định vị URLs đến các components UI cần thiết được mô tả như sau**
+```shell
+main_site/settings.py
+	ROOT_URLCONF = 'main_site.urls'
+
+main_site/urls.py
+	
+
 ```
 
 **Kết quả thực thi**<br/>
 ```shell
-tdc@tdc:~/django/hello_world$ python3 manage.py runserver
+tdc@tdc:~/django/navigate_urls$ python3 manage.py runserver
 ```
 
 **Truy cập trang chủ**
