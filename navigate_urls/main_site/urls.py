@@ -23,4 +23,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('/', include('polls.urls')),
     path('', include('polls.urls')),
+
+    # Urls trỏ đến 4 seasons khác nhau ...
+    path('spring/', include('spring.urls')),
+    path('summer/', include('summer.urls')),
+    path('autumn/', include('autumn.urls')),
+    path('winter/', include('winter.urls')),
 ]
