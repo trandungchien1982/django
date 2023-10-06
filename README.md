@@ -32,14 +32,14 @@ D:\Projects\django
 
 ==============================================================
 
-# Ví dụ [02.HelloWorld]
+# Ví dụ [02.NavigateURLToApps]
 ==============================================================
 
 **Ta sẽ tạo 1 App Django mẫu như sau:**<br/>
 - Hiển thị trang HelloWorld khi truy cập vào 
 ```shell
-http://127.0.0.1:8000
-http://127.0.0.1:8000/polls
+http://localhost:8000
+http://localhost:8000/polls
 ```
 	- In ra lời chào thế giới
 	- Chúc ngày mới vui vẻ :)
@@ -89,7 +89,7 @@ main_site/settings.py
 	ROOT_URLCONF = 'main_site.urls'
 
 main_site/urls.py
-	# Urls trỏ đến 4 seasons khác nhau ...
+# Urls trỏ đến 4 seasons khác nhau ...
     path('spring/', include('spring.urls')),
     path('summer/', include('summer.urls')),
     path('autumn/', include('autumn.urls')),
