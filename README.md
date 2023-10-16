@@ -32,100 +32,52 @@ D:\Projects\django
 
 ==============================================================
 
-# Ví dụ [02.NavigateURLToApps]
+# Ví dụ [03.RESTfulAPI]
 ==============================================================
 
 **Ta sẽ tạo 1 App Django mẫu như sau:**<br/>
-- Hiển thị trang HelloWorld khi truy cập vào 
+- Sử dụng Django REST framework
 ```shell
-http://localhost:8000
-http://localhost:8000/polls
-```
-	- In ra lời chào thế giới
-	- Chúc ngày mới vui vẻ :)
-
-- Hiển thị trang mang sắc thái mùa xuân với urls:
-```shell
-http://localhost:8000/spring
-http://localhost:8000/spring/list
+pip3 install djangorestframework
+pip3 install markdown
+pip3 install django-filter
 ```
 
-- Hiển thị trang mang sắc thái mùa hè với urls:
+- Tạo 1 app restful api bên trong project Django
 ```shell
-http://localhost:8000/summer
-http://localhost:8000/summer/list
+python3 manage.py startapp restful01
+python3 manage.py migrate
 ```
 
-- Hiển thị trang mang sắc thái mùa thu với urls:
+- Tiến hành migration data sau khi đã có models
 ```shell
-http://localhost:8000/autumn
-http://localhost:8000/autumn/list
+python3 manage.py makemigrations
+python3 manage.py migrate
 ```
 
-- Hiển thị trang mang sắc thái mùa đông với urls:
-```shell
-http://localhost:8000/winter
-http://localhost:8000/winter/list
-```
+- Các API hỗ trợ RESTful bao gồm GET, POST, PUT, DELETE
 
 
 **Tham khảo**
-- https://viblo.asia/p/tim-hieu-ve-django-framework-ho-tro-python-trong-lap-trinh-web-QpmlexbkZrd
-- https://medium.com/@doanhtu/l%C3%A0m-sao-%C4%91%E1%BB%83-t%E1%BA%A1o-1-trang-web-v%E1%BB%9Bi-django-i-fddff91786f7
+- https://viblo.asia/p/gioi-thieu-django-rest-framework-Eb85oJb2l2G
+- https://blog.logrocket.com/django-rest-framework-create-api/
+- https://www.django-rest-framework.org/tutorial/quickstart/#quickstart
 
-**Tạo 4 apps mang các sắc thái khác nhau (Python packages)**
+
+**Start Apps Django như bình thường & xem kết quả**<br/>
 ```shell
-tdc@tdc:~/django/navigate_urls$
--------------------------------------------------
-python3 manage.py startapp spring
-python3 manage.py startapp summer
-python3 manage.py startapp autumn
-python3 manage.py startapp winter
+tdc@tdc:~/django/restful-api$ python3 manage.py runserver
 ```
+- Ví dụ mẫu có sẵn trên trang chủ của Django REST framework, liên quan đến tương tác với table users ...
+- Danh sách users
 
-**Định vị URLs đến các components UI cần thiết được mô tả như sau**
 ```shell
-main_site/settings.py
-	ROOT_URLCONF = 'main_site.urls'
-
-main_site/urls.py
-    # Urls trỏ đến 4 seasons khác nhau ...
-    path('spring/', include('spring.urls')),
-    path('summer/', include('summer.urls')),
-    path('autumn/', include('autumn.urls')),
-    path('winter/', include('winter.urls')),
-	
-spring/urls.py
-	urlpatterns = [
-		path('', views.index, name='index'),
-		path('list', views.listInSpring, name='listInSpring'),
-	]
-
-summer/urls.py
-	urlpatterns = [
-		path('', views.index, name='index'),
-		path('list', views.listInSummer, name='listInSummer'),
-	]
-
-autumn/urls.py
-	urlpatterns = [
-    	path('', views.index, name='index'),
-    	path('list', views.listInAutumn, name='listInAutumn'),
-	]
-
-winter/urls.py
-	urlpatterns = [
-		path('', views.index, name='index'),
-		path('list', views.listInWinter, name='listInWinter'),
-	]
+GET http://localhost:8000/users/
 ```
-
-**Kết quả thực thi**<br/>
+- Thêm user mới với username+email, password tự nhập vào trên CLI
 ```shell
-tdc@tdc:~/django/navigate_urls$ python3 manage.py runserver
+python3 manage.py createsuperuser --email admin@example.com --username admin
 ```
+- Update các user items bằng cách login vào user/pass: admin/admin và sau đó tương tác vào UI
 
-**Truy cập trang chủ**
-```shell
-http://localhost:8000/
-```
+
